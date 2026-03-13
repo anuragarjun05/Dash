@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+*.egg
+.env
+*.log
+.pytest_cache/
+data/maintenance_records.json
+data/notifications.json
+data/qr_codes/
