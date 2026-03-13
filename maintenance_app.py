@@ -11,6 +11,7 @@ Run with::
 """
 
 import json
+import os
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -271,7 +272,7 @@ def generate_qr(n_clicks, equipment_id, lat, lng, radius):
             className="alert-banner alert-danger",
         )
 
-    base_url = "http://localhost:8050"
+    base_url = os.environ.get("APP_BASE_URL", "http://localhost:8050")
     qr_url, qr_base64 = generate_qr_code(
         base_url, equipment_id, lat, lng, radius
     )

@@ -58,7 +58,7 @@ def generate_qr_code(base_url, equipment_id, latitude, longitude, radius_m=100):
 
 def haversine_distance(lat1, lon1, lat2, lon2):
     """Return the great-circle distance in metres between two GPS points."""
-    R = 6_371_000  # Earth radius in metres
+    EARTH_RADIUS_M = 6_371_000  # Earth radius in metres
     phi1, phi2 = math.radians(lat1), math.radians(lat2)
     d_phi = math.radians(lat2 - lat1)
     d_lambda = math.radians(lon2 - lon1)
@@ -67,7 +67,7 @@ def haversine_distance(lat1, lon1, lat2, lon2):
         math.sin(d_phi / 2) ** 2
         + math.cos(phi1) * math.cos(phi2) * math.sin(d_lambda / 2) ** 2
     )
-    return R * 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+    return EARTH_RADIUS_M * 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
 
 
 def verify_location(user_lat, user_lng, qr_lat, qr_lng, radius_m=100):
